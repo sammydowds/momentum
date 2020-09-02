@@ -25,7 +25,11 @@ const LandingComp = Landing;
 const routes = [
   { path: '', component: LandingComp},
   { path: '/setup', component: SetUpComp },
-  { path: '/display', component: DisplayComp }
+  { path: '/display/:tasks', 
+    component: DisplayComp, 
+    name: "Display", 
+    props: true
+  }
 ]
 // 3. Create the router instance and pass the `routes` option
 const router = new Router({

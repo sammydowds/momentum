@@ -3,11 +3,15 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col class="text-center">
-          <p class="main-message">Momentum</p>
-          <p class="text-bottom">Focus on Today</p>
-          <b-link to="/setup">
-            <b-button variant="text-black" class="button-momentum">Build</b-button>
-          </b-link>
+            <transition appear name="fade">
+              <p class="main-message">Momentum</p>
+            </transition>
+            <transition appear name="fade2">
+              <p class="text-bottom">Focus on Today</p>
+            </transition>
+            <b-link to="/setup">
+              <b-button variant="text-black" class="button-momentum">Build</b-button>
+            </b-link>
         </b-col>
       </b-row>
     </b-container>
@@ -24,6 +28,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.fade-enter-active {
+  transition: opacity 1s ease-in;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade2-enter-active {
+  transition: opacity 4s ease-in;
+}
+.fade2-enter-to {
+  opacity: 1;
+}
+
+.fade2-enter {
+  opacity: 0;
+}
 .welcome {
   font-style: Roboto;
   color: black; 
