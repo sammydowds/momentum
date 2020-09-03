@@ -183,6 +183,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.display {
+    overflow-y: scroll; 
+}
 .current-fade-enter-active {
   transition: opacity 6s ease-in;
 }
