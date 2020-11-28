@@ -9,48 +9,12 @@
                 </b-col>
             </b-row>
             <b-row v-for="task in tasks" :key="task.id">
-                <!-- <b-col v-if="task.status === 'current'" class="times" lg="3">
-                    <b-row>
-                        <b-col>
-                            {{ task.duration }}
-                        </b-col>
-                    </b-row>
-                    <b-row>
-                        <b-col>
-                            {{ task.finish }}
-                        </b-col>
-                    </b-row>
-                </b-col> -->
                 <b-col v-if="task.status === 'current'" class="task">
                     {{ task.name }}
                 </b-col>
-                 <!-- <b-col v-if="task.status === 'complete'" class="times-complete" lg="3">
-                    <b-row>
-                        <b-col>
-                            {{ task.start }}
-                        </b-col>
-                    </b-row>
-                    <b-row>
-                        <b-col>
-                            {{ task.finish }}
-                        </b-col>
-                    </b-row>
-                </b-col> -->
                 <b-col v-if="task.status === 'complete'" class="task-complete">
                     {{ task.name }}
                 </b-col>
-                <!-- <b-col v-if="task.status === 'future'" class="times-future" lg="3">
-                    <b-row>
-                        <b-col>
-                            {{ task.start }}
-                        </b-col>
-                    </b-row>
-                    <b-row>
-                        <b-col>
-                            {{ task.finish }}
-                        </b-col>
-                    </b-row>
-                </b-col> -->
                 <b-col v-if="task.status === 'future'" class="task-future">
                     {{ task.name }}
                 </b-col>
