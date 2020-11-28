@@ -94,7 +94,7 @@
                 </p>
                 <b-nav-item :to="{
                         name: 'Display',  
-                        params: {tasks: tasks}
+                        params: {tasks: tasks, shareText: shareText}
                         }">
                     <b-button v-if="tasks.length !== 0" variant="text-black" class="button-momentum">Start</b-button>
                 </b-nav-item>
@@ -126,6 +126,7 @@ export default {
             },
             show: true, 
             tasks: [], 
+            shareText: moment().format('MM/DD/YY') + ' I worked on: ', 
             id: 0, 
             nextStart: moment()
         } 
@@ -136,6 +137,8 @@ export default {
             var start = moment(this.nextStart); 
             let finish = this.nextStart.add(this.form.duration, "Minutes");   
             let task = {"id": this.id, "name": this.form.name, "duration": this.form.duration*60, "start": start.format('h:mma'), "finish": finish.format('h:mma'), "status":"future"};
+            this.shareText = this.shareText.concat('\n - ', this.form.name, ' (', this.form.duration, 'mins) '); 
+            console.log(this.shareText); 
             this.tasks.push(task);
             this.id++; 
             this.form.name =''; 

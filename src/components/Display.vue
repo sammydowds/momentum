@@ -25,6 +25,12 @@
                     <b-button v-if="paused === true" v-on:click="pauseCountdown()" variant="text-white" class="pause-momentum-button">Resume</b-button>
                 </b-col>
             </b-row>
+            <b-row>
+                <b-col class="text-center share-text">
+                    Share or record what you are working/worked on!
+                    <b-textarea class="share-textbox" plaintext :value="shareText"></b-textarea>
+                </b-col>
+            </b-row>
         </b-col>
         <transition appear name="current-fade">
             <b-col lg="5">
@@ -88,26 +94,21 @@ export default {
   name: 'Display',
   data() {
         return {
-            // tasks: [{"id": 0, "name":"React App", "start":"7:00AM", "finish":"8:00AM", "duration": 5, "status":"current"}, 
-            //         {"id": 1, "name":"Algorithm Design", "start":"8:00AM", "finish":"9:00AM", "duration": 5, "status":"future"}, 
-            //         {"id": 2, "name":"Algorithm Study", "start":"10:00AM", "finish":"11:00AM", "duration": 5, "status":"future"}, 
-            //         {"id": 3, "name":"Lunch", "start":"12:00PM", "finish":"1:00PM", "duration": 5, "status":"future"}, 
-            //         {"id": 4, "name":"Meeting Customer", "start":"2:00PM", "finish":"3:00PM", "duration": 5, "status":"future"},
-            //         {"id": 5, "name":"Meeting Internal Team", "start":"4:00PM", "finish":"5:00PM", "duration": 5, "status":"future"},
-            //         {"id": 6, "name":"Follow Up Emails", "start":"6:00PM", "finish":"7:00PM", "duration": 5, "status":"future"}
-            // ], 
-            // tasks: this.$route.params.tasks, 
             currentTask: null, 
             displayHours: 0, 
             displayMins: 0, 
             displaySecs: 0, 
             tasksFinished: false, 
-            paused: false, 
+            paused: false,
         } 
     },
     props: {
         tasks: {
-            type: Object, 
+            type: Array, 
+            required: true
+        }, 
+        shareText: {
+            type: String, 
             required: true
         }
     }, 
@@ -139,8 +140,8 @@ export default {
     }, 
     mounted() {
         this.tasks[0]['status'] = "current"; 
-        this.currentTask = this.tasks[0]; 
-        window.setInterval(() => {this.tick();}, 1000); 
+        this.currentTask = this.tasks[0];
+        window.setInterval(() => {this.tick();}, 1000);
     }
 }
 </script>
@@ -167,6 +168,14 @@ export default {
 }
 .complete-fade-enter {
   opacity: 0;
+}
+.share-text {
+    margin-top: 20px; 
+    margin-right: 5px;  
+    margin-left: 5px; 
+}
+.share-textbox {
+    background: white;
 }
 .paused-message {
     color: red;
